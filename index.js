@@ -8,6 +8,7 @@ const port = process.env.PORT || 4000;
 const Router = require("./src/routers/userRouters");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use("/", Router);
 
