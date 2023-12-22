@@ -11,9 +11,15 @@ const schema = mongoose.Schema({
   follower: Array,
   following: Array,
   stories: Array,
-  post: Array,
+  post: [
+    {
+      imgSRC: { type: String },
+      title: { type: String },
+      idImg: { type: String },
+    },
+  ],
   notifications: Array,
-  bio: Object,
+  bio: { info: { type: String }, country: { type: String } },
 });
 
 const User = mongoose.model("Usersss", schema);
