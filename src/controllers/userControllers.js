@@ -11,8 +11,10 @@ const getPostUser = async (req, res) => {
     res.send("<h1>Bele id var!</h1>");
   } else {
     let newUser = new User(req.body);
-    newUser.id = User.length + 1;
-    console.log("length", User.length);
+
+    const allUsers = await User.find({});
+    newUser.id = +allUsers[allUsers.length - 1].id + 1;
+    console.log("length: ", newUser.id);
     console.log("testtt");
     newUser.save();
   }
