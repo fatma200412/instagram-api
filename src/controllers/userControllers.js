@@ -12,6 +12,7 @@ const getPostUser = async (req, res) => {
   } else {
     let newUser = new User(req.body);
     newUser.id = User.length + 1;
+    console.log("length", User.length);
     newUser.save();
   }
 };
