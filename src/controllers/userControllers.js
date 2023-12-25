@@ -11,6 +11,7 @@ const getPostUser = async (req, res) => {
     res.send("<h1>Bele id var!</h1>");
   } else {
     let newUser = new User(req.body);
+    newUser.id = User.length + 1;
     newUser.save();
   }
 };
