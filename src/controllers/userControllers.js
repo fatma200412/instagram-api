@@ -6,17 +6,19 @@ const getAllUser = async (req, res) => {
 };
 
 const getPostUser = async (req, res) => {
-  let userId = await User.findOne({ id: req.body.id });
-  if (userId) {
-    res.send("<h1>Bele id var!</h1>");
+  // let userId = await User.findOne({ id: req.body.id });
+  // const user = req.body;
+  let findUser = await User.findOne({ email: req.body.email });
+  if (findUser) {
+    console.log("duplicate");
+    res.send({ message: "this email already exist!" });
   } else {
+    console.log("continue");
     let newUser = new User(req.body);
-
     const allUsers = await User.find({});
     newUser.id = +allUsers[allUsers.length - 1].id + 1;
-    console.log("length: ", newUser.id);
-    console.log("testtt");
     newUser.save();
+    res.send({ message: "sign up successfully!", user: newUser });
   }
 };
 
