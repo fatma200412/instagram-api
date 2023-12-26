@@ -14,6 +14,7 @@ const getPostUser = async (req, res) => {
     res.send({ message: "this email already exist!" });
   } else {
     console.log("continue");
+
     let newUser = new User(req.body);
     const allUsers = await User.find({});
     newUser.id = +allUsers[allUsers.length - 1].id + 1;
