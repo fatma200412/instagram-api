@@ -17,6 +17,7 @@ const getPostUser = async (req, res) => {
 
     let newUser = new User(req.body);
     const allUsers = await User.find({});
+
     newUser.id = +allUsers[allUsers.length - 1].id + 1;
     newUser.save();
     res.send({ message: "sign up successfully!", user: newUser });
