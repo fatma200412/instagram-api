@@ -20,6 +20,7 @@ const getPostUser = async (req, res) => {
 
     newUser.id = +allUsers[allUsers.length - 1].id + 1;
     newUser.save();
+
     res.send({ message: "sign up successfully!", user: newUser });
   }
 };
